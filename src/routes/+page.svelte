@@ -1,6 +1,7 @@
 <!-- Homepage Hero Section - PRD Reference: "Homepage > Hero Section" -->
 <script>
 	import Hero from '$lib/components/Hero.svelte';
+	import FeatureCards from '$lib/components/FeatureCards.svelte';
 	import { onMount } from 'svelte';
 
 	let heroVisible = false;
@@ -17,6 +18,7 @@
 
 <main class="homepage">
 	<Hero {heroVisible} />
+	<FeatureCards />
 	<!-- Additional sections will be added in subsequent tasks -->
 </main>
 
