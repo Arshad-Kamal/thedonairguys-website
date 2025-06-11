@@ -1,13 +1,13 @@
 <script>
 	import { config } from '$lib/config.js';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
-	import { DEV, PROD } from '$app/environment';
+	import { dev } from '$app/environment';
 
 	// Test data
 	const envStatus = {
 		siteUrl: PUBLIC_SITE_URL,
-		isDev: DEV,
-		isProd: PROD,
+		isDev: dev,
+		isProd: !dev,
 		configWorking: !!config,
 		timestamp: new Date().toISOString()
 	};

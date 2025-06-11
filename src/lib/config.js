@@ -2,7 +2,7 @@
 // CRITICAL: Uses proper SvelteKit environment modules
 
 import { PUBLIC_SITE_URL } from '$env/static/public';
-import { DEV, PROD } from '$app/environment';
+import { dev } from '$app/environment';
 
 // Simple validation function
 function validateConfig() {
@@ -20,7 +20,7 @@ function validateConfig() {
 	}
 
 	console.log('✅ PUBLIC_SITE_URL:', PUBLIC_SITE_URL);
-	console.log('✅ Environment:', DEV ? 'development' : 'production');
+	console.log('✅ Environment:', dev ? 'development' : 'production');
 	console.log('=== CONFIG VALIDATION COMPLETE ===\n');
 }
 
@@ -30,8 +30,8 @@ validateConfig();
 // Export validated configuration
 export const config = {
 	siteUrl: PUBLIC_SITE_URL,
-	isDev: DEV,
-	isProd: PROD,
+	isDev: dev,
+	isProd: !dev,
 	baseUrl: PUBLIC_SITE_URL
 };
 
