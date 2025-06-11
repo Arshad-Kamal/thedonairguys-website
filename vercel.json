@@ -2,11 +2,6 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"framework": "sveltekit",
 	"regions": ["yyz1"],
-	"functions": {
-		"src/routes/**/*.js": {
-			"maxDuration": 10
-		}
-	},
 	"headers": [
 		{
 			"source": "/(.*)",
