@@ -1,472 +1,359 @@
+<!-- Contact Page - PRD: Hero split layout with map and contact info -->
 <script>
-	let { data } = $props();
+	import { onMount } from 'svelte';
 
-	// Contact information - these would normally come from config or CMS
-	const contactInfo = {
-		name: 'The Donair Guys',
-		address: {
-			street: '123 Main Street',
-			city: 'Halifax',
-			province: 'NS',
-			postal: 'B3H 1A1'
-		},
-		phone: '(902) 555-0123',
-		email: 'info@thedonairguys.ca',
-		hours: [
-			{ day: 'Monday', hours: '11:00 AM - 10:00 PM' },
-			{ day: 'Tuesday', hours: '11:00 AM - 10:00 PM' },
-			{ day: 'Wednesday', hours: '11:00 AM - 10:00 PM' },
-			{ day: 'Thursday', hours: '11:00 AM - 10:00 PM' },
-			{ day: 'Friday', hours: '11:00 AM - 11:00 PM' },
-			{ day: 'Saturday', hours: '11:00 AM - 11:00 PM' },
-			{ day: 'Sunday', hours: '12:00 PM - 9:00 PM' }
-		]
-	};
+	let pageVisible = false;
 
-	// Simple form state
-	let formData = $state({
-		name: '',
-		email: '',
-		phone: '',
-		message: ''
+	onMount(() => {
+		pageVisible = true;
 	});
 
-	let formStatus = $state('idle'); // idle, submitting, success, error
-	let formMessage = $state('');
+	const businessInfo = {
+		name: "The Donair Guys",
+		phone: "(780) 244-0104",
+		address: "6609 177 St NW, Edmonton, AB T5T 4J5",
+		email: "info@thedonairguys.ca",
+		hours: {
+			"Monday": "11:00 AM - 2:00 AM",
+			"Tuesday": "11:00 AM - 2:00 AM",
+			"Wednesday": "11:00 AM - 2:00 AM",
+			"Thursday": "11:00 AM - 2:00 AM",
+			"Friday": "11:00 AM - 2:00 AM",
+			"Saturday": "11:00 AM - 2:00 AM",
+			"Sunday": "11:00 AM - 2:00 AM"
+		}
+	};
 
-	// Basic form validation
-	function validateForm() {
-		if (!formData.name.trim()) {
-			throw new Error('Name is required');
-		}
-		if (!formData.email.trim() || !formData.email.includes('@')) {
-			throw new Error('Valid email is required');
-		}
-		if (!formData.message.trim()) {
-			throw new Error('Message is required');
-		}
-
-		// Basic sanitization
-		formData.name = formData.name.trim().slice(0, 100);
-		formData.email = formData.email.trim().slice(0, 100);
-		formData.phone = formData.phone.trim().slice(0, 20);
-		formData.message = formData.message.trim().slice(0, 1000);
+	function handlePhoneClick() {
+		window.location.href = `tel:${businessInfo.phone}`;
 	}
 
-	async function handleSubmit(event) {
-		event.preventDefault();
-		formStatus = 'submitting';
-		formMessage = '';
-
-		try {
-			validateForm();
-
-			// TODO: Implement actual form submission
-			// For now, just simulate success
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-
-			formStatus = 'success';
-			formMessage = "Thank you for your message! We'll get back to you soon.";
-
-			// Reset form
-			formData = { name: '', email: '', phone: '', message: '' };
-		} catch (error) {
-			formStatus = 'error';
-			formMessage = error.message;
-			console.error('[CONTACT] Form error:', error.message);
-		}
+	function handleDirectionsClick() {
+		const address = encodeURIComponent(businessInfo.address);
+		window.open(`https://maps.google.com/?q=${address}`, '_blank');
 	}
 </script>
 
 <svelte:head>
 	<title>Contact Us - The Donair Guys</title>
-	<meta
-		name="description"
-		content="Get in touch with The Donair Guys. Find our location, hours, and contact information."
-	/>
+	<meta name="description" content="Visit us at 6609 177 St NW, Edmonton. Call (780) 244-0104 to order. Open 11 AM - 2 AM daily." />
 </svelte:head>
 
-<main class="container">
-	<div class="contact-header">
-		<h1>Contact Us</h1>
-		<p>We'd love to hear from you! Visit us, call us, or send us a message.</p>
-	</div>
-
-	<div class="contact-content">
-		<div class="contact-info">
-			<section class="info-section">
-				<h2>Visit Us</h2>
-				<div class="address">
-					<p><strong>{contactInfo.name}</strong></p>
-					<p>{contactInfo.address.street}</p>
-					<p>
-						{contactInfo.address.city}, {contactInfo.address.province}
-						{contactInfo.address.postal}
-					</p>
-				</div>
-			</section>
-
-			<section class="info-section">
-				<h2>Contact Info</h2>
-				<div class="contact-details">
-					<p>
-						<strong>Phone:</strong>
-						<a href="tel:{contactInfo.phone.replace(/[^0-9]/g, '')}" class="phone-link">
-							{contactInfo.phone}
-						</a>
-					</p>
-					<p>
-						<strong>Email:</strong>
-						<a href="mailto:{contactInfo.email}" class="email-link">
-							{contactInfo.email}
-						</a>
-					</p>
-				</div>
-			</section>
-
-			<section class="info-section">
-				<h2>Hours</h2>
-				<div class="hours-list">
-					{#each contactInfo.hours as dayHours}
-						<div class="hours-row">
-							<span class="day">{dayHours.day}:</span>
-							<span class="hours">{dayHours.hours}</span>
+<main class="contact-page" class:visible={pageVisible}>
+	<section class="contact-hero">
+		<div class="hero-split">
+			<!-- Map Section -->
+			<div class="map-section">
+				<div class="map-container">
+					<div class="static-map">
+						<!-- Static map placeholder - MVP approach -->
+						<div class="map-placeholder">
+							<div class="map-pin">📍</div>
+							<p class="map-text">The Donair Guys<br>West Edmonton</p>
 						</div>
-					{/each}
-				</div>
-			</section>
-
-			<section class="info-section">
-				<h2>Find Us</h2>
-				<div class="map-placeholder">
-					<div class="map-content">
-						<p>📍 Interactive map coming soon</p>
-						<p>Located in the heart of Halifax</p>
-						<a
-							href="https://maps.google.com/?q={encodeURIComponent(
-								contactInfo.address.street +
-									', ' +
-									contactInfo.address.city +
-									', ' +
-									contactInfo.address.province
-							)}"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="map-link"
-						>
-							View on Google Maps
-						</a>
-					</div>
-				</div>
-			</section>
-		</div>
-
-		<div class="contact-form-container">
-			<section class="info-section">
-				<h2>Send Us a Message</h2>
-
-				<form onsubmit={handleSubmit} class="contact-form" novalidate>
-					<div class="form-group">
-						<label for="name">Name *</label>
-						<input
-							type="text"
-							id="name"
-							bind:value={formData.name}
-							required
-							maxlength="100"
-							disabled={formStatus === 'submitting'}
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="email">Email *</label>
-						<input
-							type="email"
-							id="email"
-							bind:value={formData.email}
-							required
-							maxlength="100"
-							disabled={formStatus === 'submitting'}
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="phone">Phone</label>
-						<input
-							type="tel"
-							id="phone"
-							bind:value={formData.phone}
-							maxlength="20"
-							disabled={formStatus === 'submitting'}
-						/>
-					</div>
-
-					<div class="form-group">
-						<label for="message">Message *</label>
-						<textarea
-							id="message"
-							bind:value={formData.message}
-							required
-							maxlength="1000"
-							rows="5"
-							disabled={formStatus === 'submitting'}
-						></textarea>
-					</div>
-
-					{#if formMessage}
-						<div
-							class="form-message"
-							class:success={formStatus === 'success'}
-							class:error={formStatus === 'error'}
-						>
-							{formMessage}
+						<div class="map-overlay">
+							<button class="directions-btn" on:click={handleDirectionsClick}>
+								Get Directions
+							</button>
 						</div>
-					{/if}
+					</div>
+				</div>
+			</div>
 
-					<button type="submit" class="submit-btn" disabled={formStatus === 'submitting'}>
-						{formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-					</button>
-				</form>
-			</section>
+			<!-- Contact Info Section -->
+			<div class="contact-section">
+				<div class="contact-content">
+					<h1 class="contact-title">Visit Us Today</h1>
+					<p class="contact-subtitle">Edmonton's favorite halal donair destination</p>
+
+					<div class="contact-card">
+						<div class="contact-item">
+							<div class="contact-icon">📍</div>
+							<div class="contact-details">
+								<h3>Location</h3>
+								<p>{businessInfo.address}</p>
+							</div>
+						</div>
+
+						<div class="contact-item">
+							<div class="contact-icon">📞</div>
+							<div class="contact-details">
+								<h3>Phone</h3>
+								<button class="phone-btn" on:click={handlePhoneClick}>
+									{businessInfo.phone}
+								</button>
+							</div>
+						</div>
+
+						<div class="contact-item">
+							<div class="contact-icon">⏰</div>
+							<div class="contact-details">
+								<h3>Hours</h3>
+								<p>Open Daily: 11:00 AM - 2:00 AM</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="action-buttons">
+						<button class="btn-primary" on:click={handlePhoneClick}>
+							Call Now
+						</button>
+						<button class="btn-secondary" on:click={handleDirectionsClick}>
+							Get Directions
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-
-	<div class="contact-footer">
-		<p>Ready to order? Give us a call or visit us today!</p>
-		<a href="/" class="btn btn-primary">Back to Home</a>
-	</div>
+	</section>
 </main>
 
+
+
 <style>
-	.contact-header {
-		text-align: center;
-		margin-bottom: 3rem;
-		padding: 2rem 0;
+	.contact-page {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: all 0.6s ease-out;
 	}
 
-	.contact-header h1 {
-		font-size: var(--text-4xl);
-		color: var(--primary-600);
-		margin-bottom: 0.5rem;
+	.contact-page.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
-	.contact-header p {
-		font-size: var(--text-lg);
-		color: var(--neutral-600);
+	.contact-hero {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
 	}
 
-	.contact-content {
+	.hero-split {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 3rem;
-		margin-bottom: 3rem;
+		width: 100%;
+		min-height: 100vh;
 	}
 
-	.info-section {
-		margin-bottom: 2rem;
+	/* Map Section */
+	.map-section {
+		background: var(--color-light-gray);
+		position: relative;
+		overflow: hidden;
 	}
 
-	.info-section h2 {
-		font-size: var(--text-xl);
-		color: var(--primary-700);
-		margin-bottom: 1rem;
+	.map-container {
+		height: 100%;
+		position: relative;
 	}
 
-	.address p {
-		margin-bottom: 0.25rem;
-		color: var(--neutral-700);
-	}
-
-	.contact-details p {
-		margin-bottom: 0.5rem;
-		color: var(--neutral-700);
-	}
-
-	.phone-link,
-	.email-link {
-		color: var(--primary-600);
-		text-decoration: none;
-	}
-
-	.phone-link:hover,
-	.email-link:hover {
-		text-decoration: underline;
-	}
-
-	.hours-list {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.hours-row {
-		display: flex;
-		justify-content: space-between;
-		padding: 0.5rem 0;
-		border-bottom: 1px solid var(--neutral-200);
-	}
-
-	.hours-row:last-child {
-		border-bottom: none;
-	}
-
-	.day {
-		font-weight: 600;
-		color: var(--neutral-700);
-	}
-
-	.hours {
-		color: var(--neutral-600);
-	}
-
-	.map-placeholder {
-		background: var(--neutral-100);
-		border: 2px dashed var(--neutral-300);
-		border-radius: 8px;
-		padding: 2rem;
-		text-align: center;
-		min-height: 200px;
+	.static-map {
+		height: 100%;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
 	}
 
-	.map-content p {
-		margin-bottom: 0.5rem;
-		color: var(--neutral-600);
-	}
-
-	.map-link {
-		color: var(--primary-600);
-		text-decoration: underline;
-	}
-
-	.contact-form {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.form-group {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.form-group label {
-		font-weight: 600;
-		color: var(--neutral-700);
-		margin-bottom: 0.5rem;
-	}
-
-	.form-group input,
-	.form-group textarea {
-		padding: 0.75rem;
-		border: 1px solid var(--neutral-300);
-		border-radius: 6px;
-		font-size: var(--text-base);
-		background: white;
-		transition: border-color 0.2s ease;
-	}
-
-	.form-group input:focus,
-	.form-group textarea:focus {
-		outline: none;
-		border-color: var(--primary-500);
-		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-	}
-
-	.form-group input:disabled,
-	.form-group textarea:disabled {
-		background: var(--neutral-100);
-		cursor: not-allowed;
-	}
-
-	.form-message {
-		padding: 1rem;
-		border-radius: 6px;
-		font-weight: 600;
-	}
-
-	.form-message.success {
-		background: #dcfce7;
-		color: #166534;
-		border: 1px solid #bbf7d0;
-	}
-
-	.form-message.error {
-		background: #fef2f2;
-		color: #dc2626;
-		border: 1px solid #fecaca;
-	}
-
-	.submit-btn {
-		padding: 0.75rem 1.5rem;
-		background: var(--primary-600);
-		color: white;
-		border: none;
-		border-radius: 6px;
-		font-size: var(--text-base);
-		font-weight: 600;
-		cursor: pointer;
-		transition: background-color 0.2s ease;
-	}
-
-	.submit-btn:hover:not(:disabled) {
-		background: var(--primary-700);
-	}
-
-	.submit-btn:disabled {
-		background: var(--neutral-400);
-		cursor: not-allowed;
-	}
-
-	.contact-footer {
+	.map-placeholder {
 		text-align: center;
-		padding-top: 2rem;
-		border-top: 1px solid var(--neutral-200);
+		color: white;
 	}
 
-	.contact-footer p {
-		color: var(--neutral-600);
+	.map-pin {
+		font-size: 4rem;
+		margin-bottom: 1rem;
+		animation: bounce 2s infinite;
+	}
+
+	.map-text {
+		font-size: 1.2rem;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+	.map-overlay {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.directions-btn {
+		background: white;
+		color: var(--color-primary);
+		padding: 1rem 2rem;
+		border: none;
+		border-radius: 50px;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+	}
+
+	.directions-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+	}
+
+	/* Contact Section */
+	.contact-section {
+		background: linear-gradient(135deg, var(--color-secondary) 0%, #ffd93d 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem;
+	}
+
+	.contact-content {
+		max-width: 500px;
+		width: 100%;
+	}
+
+	.contact-title {
+		font-size: clamp(2.5rem, 4vw, 3.5rem);
+		font-weight: 900;
+		color: var(--color-primary);
+		margin-bottom: 1rem;
+		line-height: 1.1;
+	}
+
+	.contact-subtitle {
+		font-size: 1.2rem;
+		color: var(--color-dark-gray);
+		margin-bottom: 3rem;
+	}
+
+	.contact-card {
+		background: rgba(255,255,255,0.9);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		border: 2px solid rgba(255,255,255,0.3);
+		box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+	}
+
+	.contact-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
 		margin-bottom: 1.5rem;
 	}
 
-	.btn {
-		padding: 0.75rem 1.5rem;
-		border-radius: 6px;
-		text-decoration: none;
+	.contact-item:last-child {
+		margin-bottom: 0;
+	}
+
+	.contact-icon {
+		font-size: 1.5rem;
+		width: 40px;
+		height: 40px;
+		background: var(--color-primary);
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.contact-details h3 {
+		font-weight: 700;
+		color: var(--color-primary);
+		margin-bottom: 0.5rem;
+	}
+
+	.contact-details p {
+		color: var(--color-gray);
+		line-height: 1.4;
+	}
+
+	.phone-btn {
+		background: none;
+		border: none;
+		color: var(--color-primary);
+		font-size: 1rem;
 		font-weight: 600;
-		transition: all 0.2s ease;
-		display: inline-block;
+		cursor: pointer;
+		text-decoration: underline;
+		padding: 0;
+		transition: color 0.3s ease;
+	}
+
+	.phone-btn:hover {
+		color: var(--color-secondary);
+	}
+
+	.action-buttons {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
 	.btn-primary {
-		background: var(--primary-600);
+		background: linear-gradient(135deg, var(--color-primary), #ff6b6b);
 		color: white;
+		padding: 1.2rem 2rem;
+		border: none;
+		border-radius: 50px;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 16px rgba(237, 30, 36, 0.3);
 	}
 
 	.btn-primary:hover {
-		background: var(--primary-700);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(237, 30, 36, 0.4);
 	}
 
+	.btn-secondary {
+		background: transparent;
+		color: var(--color-primary);
+		border: 2px solid var(--color-primary);
+		padding: 1.2rem 2rem;
+		border-radius: 50px;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	.btn-secondary:hover {
+		background: var(--color-primary);
+		color: white;
+		transform: translateY(-2px);
+	}
+
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+		40% { transform: translateY(-10px); }
+		60% { transform: translateY(-5px); }
+	}
+
+	/* Mobile Responsive */
 	@media (max-width: 768px) {
-		.contact-content {
+		.hero-split {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			grid-template-rows: 40vh 1fr;
 		}
 
-		.contact-header h1 {
-			font-size: var(--text-3xl);
+		.contact-section {
+			padding: 2rem 1rem;
 		}
 
-		.hours-row {
-			flex-direction: column;
-			gap: 0.25rem;
-		}
-
-		.map-placeholder {
-			min-height: 150px;
+		.contact-card {
 			padding: 1.5rem;
+		}
+
+		.action-buttons {
+			justify-content: center;
+		}
+
+		.btn-primary, .btn-secondary {
+			flex: 1;
+			min-width: 140px;
 		}
 	}
 </style>
