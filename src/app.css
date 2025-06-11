@@ -2,11 +2,11 @@
 
 /* CSS Custom Properties - From PRD */
 :root {
-	/* Brand Colors */
-	--color-primary: #8B4513;      /* Warm brown */
-	--color-primary-dark: #654321;  /* Darker brown */
-	--color-secondary: #DAA520;     /* Golden */
-	--color-accent: #FF6B6B;        /* Warm red */
+	/* Brand Colors - PRD Specified */
+	--color-primary: #ed1e24;      /* Brand Red */
+	--color-primary-dark: #c41e3a;  /* Darker Red */
+	--color-secondary: #f8ed23;     /* Brand Yellow */
+	--color-accent: #FF6B6B;        /* Warm red accent */
 	--color-success: #4ECDC4;       /* Teal */
 
 	/* Neutral Colors */

@@ -1,31 +1,27 @@
+<!-- Homepage Hero Section - PRD Reference: "Homepage > Hero Section" -->
 <script>
-	// Basic homepage - placeholder for now
+	import Hero from '$lib/components/Hero.svelte';
+	import { onMount } from 'svelte';
+
+	let heroVisible = false;
+
+	onMount(() => {
+		heroVisible = true;
+	});
 </script>
 
-<main>
-	<div class="container">
-		<h1 class="text-hero">The Donair Guys</h1>
-		<p class="text-xl">Website under construction</p>
-		<p class="text-base">Our delicious donairs are coming soon to the web!</p>
-	</div>
+<svelte:head>
+	<title>The Donair Guys - Authentic Halal Donairs Edmonton</title>
+	<meta name="description" content="Edmonton's favorite 100% Halal donairs, pizza, burgers & more. Family-owned since 2018. Order online or call (780) 244-0104." />
+</svelte:head>
+
+<main class="homepage">
+	<Hero {heroVisible} />
+	<!-- Additional sections will be added in subsequent tasks -->
 </main>
 
 <style>
-	main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.homepage {
 		min-height: 100vh;
-		text-align: center;
-	}
-
-	h1 {
-		color: var(--color-primary);
-		margin-bottom: var(--space-lg);
-	}
-
-	p {
-		color: var(--color-dark-gray);
-		margin-bottom: var(--space-md);
 	}
 </style>

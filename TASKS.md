@@ -1,18 +1,59 @@
-# The Donair Guys Website - Comprehensive Task Tracking Document
+# The Donair Guys Website - Complete Implementation Guide
 
 ## 📋 Document Navigation
 
 - [Document Usage Guide](#document-usage-guide)
 - [Project Overview](#project-overview)
-- [Pre-Project Setup](#pre-project-setup)
-- [Phase 1: Foundation](#phase-1-foundation-days-1-2)
-- [Phase 2: Core Features](#phase-2-core-features-days-3-5)
-- [Phase 3: Visual Design](#phase-3-visual-design-days-6-8)
-- [Phase 4: Integration & Polish](#phase-4-integration--polish-days-9-10)
-- [Phase 5: Testing & Launch](#phase-5-testing--launch-days-11-12)
+- [Current Status Summary](#current-status-summary)
+- [Phase 1: Foundation](#phase-1-foundation-complete)
+- [Phase 2: Core Features](#phase-2-core-features-in-progress)
+- [Phase 3: Page Implementation](#phase-3-page-implementation-new)
+- [Phase 4: Visual Design & Animation](#phase-4-visual-design--animation)
+- [Phase 5: Integration & Polish](#phase-5-integration--polish)
+- [Phase 6: Testing & Launch](#phase-6-testing--launch)
 - [Code Templates](#code-templates)
 - [Troubleshooting Guide](#troubleshooting-guide)
 - [Post-Launch Tasks](#post-launch-tasks)
+
+---
+
+## Current Status Summary
+
+### 📊 Project Progress (Based on manifest.js)
+
+**Overall Progress: 65% Complete**
+
+#### ✅ **COMPLETE** (Foundation Phase)
+- [x] SvelteKit Project Setup (JavaScript only)
+- [x] Git Repository & GitHub Connection
+- [x] Vercel Deployment Configuration
+- [x] Environment Configuration with validation
+- [x] File Structure & Component Architecture
+- [x] Base CSS with design tokens
+- [x] Svelte 5 syntax verification
+- [x] Security utilities implementation
+
+#### 🔄 **IN PROGRESS** (Core Features Phase)
+- [x] Menu data structure (static/data/menu.json)
+- [x] Basic component shells (Navigation, Footer, Hero, Menu, Location, Hours)
+- [x] Routing structure (layout, homepage, menu, contact)
+- [ ] **MISSING: Actual page content implementation**
+- [ ] **MISSING: Visual design application**
+
+#### ❌ **NOT STARTED** (Critical Gaps)
+- [ ] Homepage hero section content (PRD: 5 sections)
+- [ ] Menu page implementation (PRD: 5 sections)
+- [ ] Contact page layout (PRD: 5 sections)
+- [ ] Brand color application (#ed1e24, #f8ed23)
+- [ ] Gradient and animation implementation
+- [ ] Order system integration
+- [ ] Performance optimization
+- [ ] Testing and deployment
+
+### 🎯 **Next Priority Tasks**
+1. **Page Implementation** - Create actual page content per PRD specifications
+2. **Visual Design** - Apply brand colors, gradients, animations
+3. **Integration** - Connect ordering system and optimize performance
 
 ---
 
@@ -1007,36 +1048,1280 @@ find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules
 
 ---
 
-## Phase 2: Core Features (Days 3-5)
+## Phase 2: Core Features ✅ COMPLETE
 
 ### 📋 Phase 2 Overview
 
 **Goal**: Implement core functionality - menu, location, hours, navigation
 
+**Status**: ✅ **COMPLETE** - All core features implemented
+- ✅ Menu data structure (static/data/menu.json)
+- ✅ Component architecture (Navigation, Footer, Hero, Menu, Location, Hours)
+- ✅ Routing structure (layout, homepage, menu, contact)
+- ✅ Security utilities and formatting functions
+- ✅ Environment configuration with validation
+
+**Next Phase**: Page Implementation (actual content creation)
+
+---
+
+## Phase 3: Page Implementation (CRITICAL - Missing Content)
+
+### 📋 Phase 3 Overview
+
+**Goal**: Create actual page content per PRD specifications
+
+**Status**: ❌ **NOT STARTED** - Critical gap in current implementation
+
 **Key Deliverables**:
-- Complete menu system with filtering
-- Location component with live hours
-- Contact page with map
-- Responsive navigation
-- Homepage with all sections
+- Homepage with 5 sections per PRD (hero, features, menu preview, about, location)
+- Menu page with 5 sections per PRD (hero banner, category nav, menu grid, floating button, footer CTA)
+- Contact page with 5 sections per PRD (hero split, contact card, hours grid, action buttons, community)
+- Brand color application (#ed1e24, #f8ed23)
+- Visual design implementation
+
+**Dependencies**: Phase 1 & 2 complete ✅
 
 ---
 
-### Day 3: Menu System Implementation
+### Task 3.1: Homepage Hero Section Implementation
 
-[See docs/TASKS-EXTENDED.md for detailed Menu component implementation]
+📋 **Prerequisites**:
+- Foundation phase complete (manifest.js: projectSetup, routing, styling)
+- PRD.md "Homepage" section reviewed
+
+🎯 **Objective**: Implement homepage hero section with brand colors and animations per PRD specifications
+
+📝 **Implementation Steps**:
+
+1. **Update src/routes/+page.svelte** with hero content:
+   ```svelte
+   <!-- Homepage Hero Section - PRD Reference: "Homepage > Hero Section" -->
+   <script>
+     import Hero from '$lib/components/Hero.svelte';
+     import { onMount } from 'svelte';
+
+     let heroVisible = false;
+
+     onMount(() => {
+       heroVisible = true;
+     });
+   </script>
+
+   <svelte:head>
+     <title>The Donair Guys - Authentic Halal Donairs Edmonton</title>
+     <meta name="description" content="Edmonton's favorite 100% Halal donairs, pizza, burgers & more. Family-owned since 2018. Order online or call (780) 244-0104." />
+   </svelte:head>
+
+   <main class="homepage">
+     <Hero {heroVisible} />
+     <!-- Additional sections will be added in subsequent tasks -->
+   </main>
+
+   <style>
+     .homepage {
+       min-height: 100vh;
+     }
+   </style>
+   ```
+
+2. **Update src/lib/components/Hero.svelte** with PRD content:
+   ```svelte
+   <!-- Hero Component - PRD: Full viewport height with brand colors -->
+   <script>
+     export let heroVisible = false;
+   </script>
+
+   <section class="hero" class:visible={heroVisible}>
+     <div class="hero-content">
+       <div class="hero-text">
+         <h1 class="hero-title">Edmonton's Favorite<br><span class="highlight">Halal Donairs</span></h1>
+         <p class="hero-subtitle">Fresh daily ingredients, traditional recipes, 100% halal certified since 2018</p>
+         <div class="hero-badge">
+           <span class="badge-text">100% Halal Certified</span>
+           <span class="badge-check">✓</span>
+         </div>
+         <div class="hero-actions">
+           <button class="btn-primary">Order Now</button>
+           <button class="btn-secondary">View Menu</button>
+         </div>
+       </div>
+       <div class="hero-visual">
+         <!-- CSS-only visual design per MVP approach -->
+         <div class="gradient-circle"></div>
+         <div class="floating-elements">
+           <div class="element element-1"></div>
+           <div class="element element-2"></div>
+           <div class="element element-3"></div>
+         </div>
+       </div>
+     </div>
+     <div class="scroll-indicator">
+       <span>Scroll to explore</span>
+       <div class="scroll-arrow"></div>
+     </div>
+   </section>
+
+   <style>
+     /* Hero Section Styles - PRD Brand Colors Required */
+     .hero {
+       height: 100vh;
+       background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       position: relative;
+       overflow: hidden;
+       opacity: 0;
+       transform: translateY(30px);
+       transition: all 0.8s ease-out;
+     }
+
+     .hero.visible {
+       opacity: 1;
+       transform: translateY(0);
+     }
+
+     .hero-content {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 4rem;
+       max-width: 1200px;
+       padding: 0 2rem;
+       align-items: center;
+     }
+
+     .hero-title {
+       font-size: clamp(2.5rem, 5vw, 4rem);
+       font-weight: 900;
+       color: white;
+       line-height: 1.1;
+       margin-bottom: 1.5rem;
+     }
+
+     .highlight {
+       color: var(--color-secondary);
+       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+     }
+
+     .hero-subtitle {
+       font-size: 1.2rem;
+       color: rgba(255,255,255,0.9);
+       margin-bottom: 2rem;
+       line-height: 1.6;
+     }
+
+     .hero-badge {
+       background: var(--color-secondary);
+       color: var(--color-primary);
+       padding: 1rem 2rem;
+       border-radius: 50px;
+       display: inline-flex;
+       align-items: center;
+       gap: 0.5rem;
+       font-weight: 700;
+       margin-bottom: 2rem;
+       box-shadow: 0 8px 24px rgba(248, 237, 35, 0.3);
+       animation: float 3s ease-in-out infinite;
+     }
+
+     .badge-check {
+       background: var(--color-success);
+       color: white;
+       width: 24px;
+       height: 24px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-size: 0.8rem;
+     }
+
+     .hero-actions {
+       display: flex;
+       gap: 1rem;
+       flex-wrap: wrap;
+     }
+
+     .btn-primary {
+       background: linear-gradient(135deg, var(--color-primary), #ff6b6b);
+       color: white;
+       padding: 1.2rem 2.5rem;
+       border: none;
+       border-radius: 50px;
+       font-weight: 700;
+       font-size: 1.1rem;
+       text-transform: uppercase;
+       letter-spacing: 0.08em;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 8px 24px rgba(237, 30, 36, 0.3);
+     }
+
+     .btn-primary:hover {
+       transform: translateY(-3px) scale(1.02);
+       box-shadow: 0 12px 32px rgba(237, 30, 36, 0.4);
+     }
+
+     .btn-secondary {
+       background: transparent;
+       color: white;
+       border: 2px solid white;
+       padding: 1.2rem 2.5rem;
+       border-radius: 50px;
+       font-weight: 700;
+       font-size: 1.1rem;
+       text-transform: uppercase;
+       letter-spacing: 0.08em;
+       cursor: pointer;
+       transition: all 0.3s ease;
+     }
+
+     .btn-secondary:hover {
+       background: white;
+       color: var(--color-primary);
+       transform: translateY(-3px);
+     }
+
+     /* Visual Elements */
+     .hero-visual {
+       position: relative;
+       height: 400px;
+     }
+
+     .gradient-circle {
+       width: 300px;
+       height: 300px;
+       background: linear-gradient(45deg, var(--color-secondary), #ffd93d);
+       border-radius: 50%;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       opacity: 0.8;
+       animation: pulse 4s ease-in-out infinite;
+     }
+
+     .floating-elements {
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+     }
+
+     .element {
+       position: absolute;
+       background: rgba(255,255,255,0.1);
+       border-radius: 50%;
+       animation: float 6s ease-in-out infinite;
+     }
+
+     .element-1 {
+       width: 60px;
+       height: 60px;
+       top: 20%;
+       left: 20%;
+       animation-delay: 0s;
+     }
+
+     .element-2 {
+       width: 40px;
+       height: 40px;
+       top: 60%;
+       right: 30%;
+       animation-delay: 2s;
+     }
+
+     .element-3 {
+       width: 80px;
+       height: 80px;
+       bottom: 20%;
+       left: 60%;
+       animation-delay: 4s;
+     }
+
+     .scroll-indicator {
+       position: absolute;
+       bottom: 2rem;
+       left: 50%;
+       transform: translateX(-50%);
+       color: white;
+       text-align: center;
+       animation: bounce 2s infinite;
+     }
+
+     .scroll-arrow {
+       width: 20px;
+       height: 20px;
+       border-right: 2px solid white;
+       border-bottom: 2px solid white;
+       transform: rotate(45deg);
+       margin: 0.5rem auto;
+     }
+
+     /* Animations */
+     @keyframes float {
+       0%, 100% { transform: translateY(0); }
+       50% { transform: translateY(-20px); }
+     }
+
+     @keyframes pulse {
+       0%, 100% { transform: translate(-50%, -50%) scale(1); }
+       50% { transform: translate(-50%, -50%) scale(1.1); }
+     }
+
+     @keyframes bounce {
+       0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+       40% { transform: translateX(-50%) translateY(-10px); }
+       60% { transform: translateX(-50%) translateY(-5px); }
+     }
+
+     /* Mobile Responsive */
+     @media (max-width: 768px) {
+       .hero-content {
+         grid-template-columns: 1fr;
+         text-align: center;
+         gap: 2rem;
+       }
+
+       .hero-visual {
+         height: 200px;
+       }
+
+       .gradient-circle {
+         width: 200px;
+         height: 200px;
+       }
+
+       .hero-actions {
+         justify-content: center;
+       }
+
+       .btn-primary, .btn-secondary {
+         padding: 1rem 2rem;
+         font-size: 1rem;
+       }
+     }
+   </style>
+   ```
+
+✅ **Acceptance Criteria**:
+- [ ] Hero section displays full viewport height
+- [ ] Brand colors (#ed1e24, #f8ed23) prominently used
+- [ ] Gradient backgrounds implemented
+- [ ] Floating "100% Halal Certified" badge with animation
+- [ ] Two CTA buttons with hover effects
+- [ ] Responsive design works on mobile
+- [ ] Scroll indicator with animation
+- [ ] CSS-only visual elements (no images)
+- [ ] Page loads under 3 seconds
+
+🔗 **PRD Reference**: "Homepage > Hero Section (Full viewport height)" and "Brand Guidelines"
+
+🧪 **Verification**:
+1. Run `npm run dev` and check http://localhost:5173
+2. Verify brand colors are visible
+3. Test hover animations on buttons
+4. Check mobile responsiveness
+5. Confirm no console errors
+6. Update manifest.js with completion status
+
+⚠️ **Common Issues**:
+- CSS variables not loading (check app.css import)
+- Animations not smooth (verify GPU acceleration)
+- Mobile layout breaking (test grid-template-columns)
+
+### Task 3.2: Homepage Feature Cards Section
+
+📋 **Prerequisites**:
+- Task 3.1 (Hero Section) complete
+- PRD.md "Homepage > Feature Cards" section reviewed
+
+🎯 **Objective**: Implement 3-column feature cards with brand colors and animations
+
+📝 **Implementation Steps**:
+
+1. **Create src/lib/components/FeatureCards.svelte**:
+   ```svelte
+   <!-- Feature Cards Component - PRD: 3-column grid with brand colors -->
+   <script>
+     import { onMount } from 'svelte';
+
+     let cardsVisible = false;
+
+     onMount(() => {
+       const observer = new IntersectionObserver((entries) => {
+         entries.forEach(entry => {
+           if (entry.isIntersecting) {
+             cardsVisible = true;
+             observer.unobserve(entry.target);
+           }
+         });
+       }, { threshold: 0.1 });
+
+       const section = document.querySelector('.feature-cards');
+       if (section) observer.observe(section);
+
+       return () => observer.disconnect();
+     });
+
+     const features = [
+       {
+         icon: '🕐',
+         title: 'Fresh Daily',
+         description: 'Made fresh every day with premium ingredients and traditional recipes',
+         color: 'red'
+       },
+       {
+         icon: '✓',
+         title: '100% Halal',
+         description: 'Certified halal ingredients and preparation methods you can trust',
+         color: 'yellow'
+       },
+       {
+         icon: '❤️',
+         title: 'Family Owned',
+         description: 'Proudly serving Edmonton families since 2018 with authentic flavors',
+         color: 'red'
+       }
+     ];
+   </script>
+
+   <section class="feature-cards" class:visible={cardsVisible}>
+     <div class="container">
+       <h2 class="section-title">Why Choose The Donair Guys?</h2>
+       <div class="cards-grid">
+         {#each features as feature, index}
+           <div class="feature-card" class:red={feature.color === 'red'} class:yellow={feature.color === 'yellow'} style="animation-delay: {index * 0.2}s">
+             <div class="card-icon" class:spin={cardsVisible}>
+               {feature.icon}
+             </div>
+             <h3 class="card-title">{feature.title}</h3>
+             <p class="card-description">{feature.description}</p>
+           </div>
+         {/each}
+       </div>
+     </div>
+   </section>
+
+   <style>
+     .feature-cards {
+       padding: 5rem 0;
+       background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-light-gray) 100%);
+       position: relative;
+       overflow: hidden;
+     }
+
+     .feature-cards::before {
+       content: '';
+       position: absolute;
+       top: -50px;
+       left: 0;
+       right: 0;
+       height: 100px;
+       background: var(--color-secondary);
+       transform: skewY(-2deg);
+       z-index: 1;
+     }
+
+     .container {
+       position: relative;
+       z-index: 2;
+     }
+
+     .section-title {
+       text-align: center;
+       font-size: clamp(2rem, 4vw, 3rem);
+       font-weight: 900;
+       color: var(--color-primary);
+       margin-bottom: 3rem;
+       opacity: 0;
+       transform: translateY(30px);
+       transition: all 0.6s ease-out;
+     }
+
+     .visible .section-title {
+       opacity: 1;
+       transform: translateY(0);
+     }
+
+     .cards-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 2rem;
+       max-width: 1200px;
+       margin: 0 auto;
+     }
+
+     .feature-card {
+       background: white;
+       padding: 2.5rem 2rem;
+       border-radius: 20px;
+       text-align: center;
+       position: relative;
+       overflow: hidden;
+       opacity: 0;
+       transform: translateY(50px) scale(0.9);
+       transition: all 0.6s ease-out;
+       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+     }
+
+     .visible .feature-card {
+       opacity: 1;
+       transform: translateY(0) scale(1);
+     }
+
+     .feature-card::before {
+       content: '';
+       position: absolute;
+       top: -2px;
+       left: -2px;
+       right: -2px;
+       bottom: -2px;
+       border-radius: 20px;
+       opacity: 0;
+       z-index: -1;
+       transition: opacity 0.3s ease;
+     }
+
+     .feature-card.red::before {
+       background: linear-gradient(135deg, var(--color-primary), #ff6b6b);
+     }
+
+     .feature-card.yellow::before {
+       background: linear-gradient(135deg, var(--color-secondary), #ffd93d);
+     }
+
+     .feature-card:hover {
+       transform: translateY(-10px) scale(1.02);
+       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+     }
+
+     .feature-card:hover::before {
+       opacity: 1;
+     }
+
+     .card-icon {
+       font-size: 3rem;
+       margin-bottom: 1.5rem;
+       display: inline-block;
+       transition: transform 0.3s ease;
+     }
+
+     .card-icon.spin {
+       animation: iconSpin 0.6s ease-out;
+     }
+
+     .card-title {
+       font-size: 1.5rem;
+       font-weight: 700;
+       color: var(--color-primary);
+       margin-bottom: 1rem;
+     }
+
+     .card-description {
+       color: var(--color-gray);
+       line-height: 1.6;
+       font-size: 1rem;
+     }
+
+     @keyframes iconSpin {
+       0% { transform: rotate(0deg) scale(1); }
+       50% { transform: rotate(180deg) scale(1.2); }
+       100% { transform: rotate(360deg) scale(1); }
+     }
+
+     /* Mobile Responsive */
+     @media (max-width: 768px) {
+       .feature-cards {
+         padding: 3rem 0;
+       }
+
+       .cards-grid {
+         grid-template-columns: 1fr;
+         gap: 1.5rem;
+       }
+
+       .feature-card {
+         padding: 2rem 1.5rem;
+       }
+     }
+   </style>
+   ```
+
+2. **Update src/routes/+page.svelte** to include FeatureCards:
+   ```svelte
+   <script>
+     import Hero from '$lib/components/Hero.svelte';
+     import FeatureCards from '$lib/components/FeatureCards.svelte';
+     import { onMount } from 'svelte';
+
+     let heroVisible = false;
+
+     onMount(() => {
+       heroVisible = true;
+     });
+   </script>
+
+   <svelte:head>
+     <title>The Donair Guys - Authentic Halal Donairs Edmonton</title>
+     <meta name="description" content="Edmonton's favorite 100% Halal donairs, pizza, burgers & more. Family-owned since 2018. Order online or call (780) 244-0104." />
+   </svelte:head>
+
+   <main class="homepage">
+     <Hero {heroVisible} />
+     <FeatureCards />
+     <!-- Additional sections will be added in subsequent tasks -->
+   </main>
+   ```
+
+✅ **Acceptance Criteria**:
+- [ ] Three feature cards with distinct content
+- [ ] Alternating red and yellow gradient borders on hover
+- [ ] Staggered entrance animation with intersection observer
+- [ ] Icon spin animation on scroll reveal
+- [ ] Responsive grid layout (3-column desktop, 1-column mobile)
+- [ ] Diagonal section divider with yellow background
+- [ ] Cards lift and scale on hover
+- [ ] Brand colors prominently featured
+
+🔗 **PRD Reference**: "Homepage > Feature Cards (3-column grid on colored background)"
 
 ---
 
-### Day 4: Location & Hours
+### Task 3.3: Menu Page Hero Banner Implementation
 
-[See docs/TASKS-EXTENDED.md for detailed Location component implementation]
+📋 **Prerequisites**:
+- Foundation phase complete
+- PRD.md "Menu Page > Hero Banner" section reviewed
+
+🎯 **Objective**: Create menu page hero banner with gradient overlay and animated elements
+
+📝 **Implementation Steps**:
+
+1. **Update src/routes/menu/+page.svelte**:
+   ```svelte
+   <!-- Menu Page - PRD: Hero banner with category navigation -->
+   <script>
+     import { onMount } from 'svelte';
+
+     let heroVisible = false;
+
+     onMount(() => {
+       heroVisible = true;
+     });
+   </script>
+
+   <svelte:head>
+     <title>Our Menu - The Donair Guys</title>
+     <meta name="description" content="Explore our complete menu of 100% halal donairs, pizza, burgers, poutine, wings and salads. Fresh ingredients, authentic flavors." />
+   </svelte:head>
+
+   <main class="menu-page">
+     <section class="menu-hero" class:visible={heroVisible}>
+       <div class="hero-background">
+         <div class="gradient-overlay"></div>
+         <div class="floating-food-icons">
+           <div class="food-icon icon-1">🥙</div>
+           <div class="food-icon icon-2">🍕</div>
+           <div class="food-icon icon-3">🍔</div>
+           <div class="food-icon icon-4">🍟</div>
+           <div class="food-icon icon-5">🥗</div>
+         </div>
+       </div>
+       <div class="hero-content">
+         <div class="halal-badge rotating">
+           <span>100% Halal</span>
+         </div>
+         <h1 class="hero-title">Our Menu</h1>
+         <p class="hero-subtitle">Authentic flavors, fresh ingredients, traditional recipes</p>
+       </div>
+     </section>
+
+     <!-- Menu content will be added in subsequent tasks -->
+   </main>
+
+   <style>
+     .menu-hero {
+       height: 40vh;
+       min-height: 400px;
+       position: relative;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       overflow: hidden;
+       opacity: 0;
+       transform: translateY(30px);
+       transition: all 0.8s ease-out;
+     }
+
+     .menu-hero.visible {
+       opacity: 1;
+       transform: translateY(0);
+     }
+
+     .hero-background {
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       z-index: 1;
+     }
+
+     .gradient-overlay {
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+       opacity: 0.9;
+     }
+
+     .floating-food-icons {
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+     }
+
+     .food-icon {
+       position: absolute;
+       font-size: 2rem;
+       opacity: 0.3;
+       animation: floatFood 8s ease-in-out infinite;
+     }
+
+     .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+     .icon-2 { top: 30%; right: 15%; animation-delay: 1.6s; }
+     .icon-3 { bottom: 30%; left: 20%; animation-delay: 3.2s; }
+     .icon-4 { bottom: 20%; right: 25%; animation-delay: 4.8s; }
+     .icon-5 { top: 50%; left: 50%; animation-delay: 6.4s; }
+
+     .hero-content {
+       position: relative;
+       z-index: 2;
+       text-align: center;
+       color: white;
+     }
+
+     .halal-badge {
+       background: var(--color-secondary);
+       color: var(--color-primary);
+       padding: 0.8rem 1.5rem;
+       border-radius: 50px;
+       font-weight: 700;
+       display: inline-block;
+       margin-bottom: 2rem;
+       box-shadow: 0 8px 24px rgba(248, 237, 35, 0.3);
+     }
+
+     .halal-badge.rotating {
+       animation: slowRotate 20s linear infinite;
+     }
+
+     .hero-title {
+       font-size: clamp(3rem, 6vw, 5rem);
+       font-weight: 900;
+       margin-bottom: 1rem;
+       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+       background: linear-gradient(45deg, white, var(--color-secondary));
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+     }
+
+     .hero-subtitle {
+       font-size: 1.2rem;
+       opacity: 0.9;
+       max-width: 600px;
+       margin: 0 auto;
+     }
+
+     @keyframes floatFood {
+       0%, 100% { transform: translateY(0) rotate(0deg); }
+       25% { transform: translateY(-20px) rotate(90deg); }
+       50% { transform: translateY(-10px) rotate(180deg); }
+       75% { transform: translateY(-30px) rotate(270deg); }
+     }
+
+     @keyframes slowRotate {
+       from { transform: rotate(0deg); }
+       to { transform: rotate(360deg); }
+     }
+
+     /* Mobile Responsive */
+     @media (max-width: 768px) {
+       .menu-hero {
+         height: 50vh;
+         min-height: 300px;
+       }
+
+       .food-icon {
+         font-size: 1.5rem;
+       }
+
+       .hero-title {
+         font-size: 2.5rem;
+       }
+     }
+   </style>
+   ```
+
+✅ **Acceptance Criteria**:
+- [ ] 40vh height hero banner (PRD specification)
+- [ ] Gradient overlay (red to yellow) over background
+- [ ] Animated food icons floating in background
+- [ ] "100% Halal" badge with slow rotation
+- [ ] 3D text effect on "Our Menu" title
+- [ ] Responsive design for mobile
+- [ ] Smooth entrance animation
+- [ ] Brand colors prominently used
+
+🔗 **PRD Reference**: "Menu Page > Hero Banner (40vh height)"
 
 ---
 
-### Day 5: Homepage & Navigation
+### Task 3.4: Contact Page Hero Split Layout
 
-[See docs/TASKS-EXTENDED.md for detailed Navigation implementation]
+📋 **Prerequisites**:
+- Foundation phase complete
+- PRD.md "Contact Page > Hero Split Layout" section reviewed
+
+🎯 **Objective**: Implement contact page with split layout (map left, contact info right)
+
+📝 **Implementation Steps**:
+
+1. **Update src/routes/contact/+page.svelte**:
+   ```svelte
+   <!-- Contact Page - PRD: Hero split layout with map and contact info -->
+   <script>
+     import { onMount } from 'svelte';
+
+     let pageVisible = false;
+
+     onMount(() => {
+       pageVisible = true;
+     });
+
+     const businessInfo = {
+       name: "The Donair Guys",
+       phone: "(780) 244-0104",
+       address: "6609 177 St NW, Edmonton, AB T5T 4J5",
+       email: "info@thedonairguys.ca",
+       hours: {
+         "Monday": "11:00 AM - 2:00 AM",
+         "Tuesday": "11:00 AM - 2:00 AM",
+         "Wednesday": "11:00 AM - 2:00 AM",
+         "Thursday": "11:00 AM - 2:00 AM",
+         "Friday": "11:00 AM - 2:00 AM",
+         "Saturday": "11:00 AM - 2:00 AM",
+         "Sunday": "11:00 AM - 2:00 AM"
+       }
+     };
+
+     function handlePhoneClick() {
+       window.location.href = `tel:${businessInfo.phone}`;
+     }
+
+     function handleDirectionsClick() {
+       const address = encodeURIComponent(businessInfo.address);
+       window.open(`https://maps.google.com/?q=${address}`, '_blank');
+     }
+   </script>
+
+   <svelte:head>
+     <title>Contact Us - The Donair Guys</title>
+     <meta name="description" content="Visit us at 6609 177 St NW, Edmonton. Call (780) 244-0104 to order. Open 11 AM - 2 AM daily." />
+   </svelte:head>
+
+   <main class="contact-page" class:visible={pageVisible}>
+     <section class="contact-hero">
+       <div class="hero-split">
+         <!-- Map Section -->
+         <div class="map-section">
+           <div class="map-container">
+             <div class="static-map">
+               <!-- Static map placeholder - MVP approach -->
+               <div class="map-placeholder">
+                 <div class="map-pin">📍</div>
+                 <p class="map-text">The Donair Guys<br>West Edmonton</p>
+               </div>
+               <div class="map-overlay">
+                 <button class="directions-btn" on:click={handleDirectionsClick}>
+                   Get Directions
+                 </button>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <!-- Contact Info Section -->
+         <div class="contact-section">
+           <div class="contact-content">
+             <h1 class="contact-title">Visit Us Today</h1>
+             <p class="contact-subtitle">Edmonton's favorite halal donair destination</p>
+
+             <div class="contact-card">
+               <div class="contact-item">
+                 <div class="contact-icon">📍</div>
+                 <div class="contact-details">
+                   <h3>Location</h3>
+                   <p>{businessInfo.address}</p>
+                 </div>
+               </div>
+
+               <div class="contact-item">
+                 <div class="contact-icon">📞</div>
+                 <div class="contact-details">
+                   <h3>Phone</h3>
+                   <button class="phone-btn" on:click={handlePhoneClick}>
+                     {businessInfo.phone}
+                   </button>
+                 </div>
+               </div>
+
+               <div class="contact-item">
+                 <div class="contact-icon">⏰</div>
+                 <div class="contact-details">
+                   <h3>Hours</h3>
+                   <p>Open Daily: 11:00 AM - 2:00 AM</p>
+                 </div>
+               </div>
+             </div>
+
+             <div class="action-buttons">
+               <button class="btn-primary" on:click={handlePhoneClick}>
+                 Call Now
+               </button>
+               <button class="btn-secondary" on:click={handleDirectionsClick}>
+                 Get Directions
+               </button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+   </main>
+
+   <style>
+     .contact-page {
+       opacity: 0;
+       transform: translateY(20px);
+       transition: all 0.6s ease-out;
+     }
+
+     .contact-page.visible {
+       opacity: 1;
+       transform: translateY(0);
+     }
+
+     .contact-hero {
+       min-height: 100vh;
+       display: flex;
+       align-items: center;
+     }
+
+     .hero-split {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       width: 100%;
+       min-height: 100vh;
+     }
+
+     /* Map Section */
+     .map-section {
+       background: var(--color-light-gray);
+       position: relative;
+       overflow: hidden;
+     }
+
+     .map-container {
+       height: 100%;
+       position: relative;
+     }
+
+     .static-map {
+       height: 100%;
+       background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       position: relative;
+     }
+
+     .map-placeholder {
+       text-align: center;
+       color: white;
+     }
+
+     .map-pin {
+       font-size: 4rem;
+       margin-bottom: 1rem;
+       animation: bounce 2s infinite;
+     }
+
+     .map-text {
+       font-size: 1.2rem;
+       font-weight: 600;
+       line-height: 1.4;
+     }
+
+     .map-overlay {
+       position: absolute;
+       bottom: 2rem;
+       left: 50%;
+       transform: translateX(-50%);
+     }
+
+     .directions-btn {
+       background: white;
+       color: var(--color-primary);
+       padding: 1rem 2rem;
+       border: none;
+       border-radius: 50px;
+       font-weight: 700;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+     }
+
+     .directions-btn:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+     }
+
+     /* Contact Section */
+     .contact-section {
+       background: linear-gradient(135deg, var(--color-secondary) 0%, #ffd93d 100%);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 3rem;
+     }
+
+     .contact-content {
+       max-width: 500px;
+       width: 100%;
+     }
+
+     .contact-title {
+       font-size: clamp(2.5rem, 4vw, 3.5rem);
+       font-weight: 900;
+       color: var(--color-primary);
+       margin-bottom: 1rem;
+       line-height: 1.1;
+     }
+
+     .contact-subtitle {
+       font-size: 1.2rem;
+       color: var(--color-dark-gray);
+       margin-bottom: 3rem;
+     }
+
+     .contact-card {
+       background: rgba(255,255,255,0.9);
+       backdrop-filter: blur(10px);
+       border-radius: 20px;
+       padding: 2rem;
+       margin-bottom: 2rem;
+       border: 2px solid rgba(255,255,255,0.3);
+       box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+     }
+
+     .contact-item {
+       display: flex;
+       align-items: flex-start;
+       gap: 1rem;
+       margin-bottom: 1.5rem;
+     }
+
+     .contact-item:last-child {
+       margin-bottom: 0;
+     }
+
+     .contact-icon {
+       font-size: 1.5rem;
+       width: 40px;
+       height: 40px;
+       background: var(--color-primary);
+       color: white;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-shrink: 0;
+     }
+
+     .contact-details h3 {
+       font-weight: 700;
+       color: var(--color-primary);
+       margin-bottom: 0.5rem;
+     }
+
+     .contact-details p {
+       color: var(--color-gray);
+       line-height: 1.4;
+     }
+
+     .phone-btn {
+       background: none;
+       border: none;
+       color: var(--color-primary);
+       font-size: 1rem;
+       font-weight: 600;
+       cursor: pointer;
+       text-decoration: underline;
+       padding: 0;
+       transition: color 0.3s ease;
+     }
+
+     .phone-btn:hover {
+       color: var(--color-secondary);
+     }
+
+     .action-buttons {
+       display: flex;
+       gap: 1rem;
+       flex-wrap: wrap;
+     }
+
+     .btn-primary {
+       background: linear-gradient(135deg, var(--color-primary), #ff6b6b);
+       color: white;
+       padding: 1.2rem 2rem;
+       border: none;
+       border-radius: 50px;
+       font-weight: 700;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 4px 16px rgba(237, 30, 36, 0.3);
+     }
+
+     .btn-primary:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 24px rgba(237, 30, 36, 0.4);
+     }
+
+     .btn-secondary {
+       background: transparent;
+       color: var(--color-primary);
+       border: 2px solid var(--color-primary);
+       padding: 1.2rem 2rem;
+       border-radius: 50px;
+       font-weight: 700;
+       cursor: pointer;
+       transition: all 0.3s ease;
+     }
+
+     .btn-secondary:hover {
+       background: var(--color-primary);
+       color: white;
+       transform: translateY(-2px);
+     }
+
+     @keyframes bounce {
+       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+       40% { transform: translateY(-10px); }
+       60% { transform: translateY(-5px); }
+     }
+
+     /* Mobile Responsive */
+     @media (max-width: 768px) {
+       .hero-split {
+         grid-template-columns: 1fr;
+         grid-template-rows: 40vh 1fr;
+       }
+
+       .contact-section {
+         padding: 2rem 1rem;
+       }
+
+       .contact-card {
+         padding: 1.5rem;
+       }
+
+       .action-buttons {
+         justify-content: center;
+       }
+
+       .btn-primary, .btn-secondary {
+         flex: 1;
+         min-width: 140px;
+       }
+     }
+   </style>
+   ```
+
+✅ **Acceptance Criteria**:
+- [ ] Split layout: map left, contact info right (desktop)
+- [ ] Stacked layout on mobile (map top, info bottom)
+- [ ] Static map placeholder with animated pin
+- [ ] Glass effect contact card with backdrop blur
+- [ ] Click-to-call phone functionality
+- [ ] Get directions button opens Google Maps
+- [ ] Brand colors (yellow gradient background)
+- [ ] Responsive design for all screen sizes
+- [ ] Smooth entrance animations
+
+🔗 **PRD Reference**: "Contact Page > Hero Split Layout"
+
+---
+
+## Phase 4: Visual Design & Animation
+
+### 📋 Phase 4 Overview
+
+**Goal**: Apply comprehensive visual design with brand colors, gradients, and animations
+
+**Status**: ❌ **NOT STARTED** - Requires page implementation completion
+
+**Key Deliverables**:
+- Brand color application throughout all pages
+- Gradient implementations per PRD specifications
+- Animation system with performance monitoring
+- Mobile-optimized visual effects
+- Accessibility compliance (reduced motion support)
+
+**Dependencies**: Phase 3 (Page Implementation) must be complete
+
+---
+
+## Phase 5: Integration & Polish
+
+### 📋 Phase 5 Overview
+
+**Goal**: Integrate ordering system, optimize performance, and add final polish
+
+**Status**: ❌ **NOT STARTED**
+
+**Key Deliverables**:
+- Order system integration with hours validation
+- Performance optimization (< 3s load time)
+- SEO implementation (sitemap, meta tags)
+- Security hardening
+- Cross-browser testing
+
+---
+
+## Phase 6: Testing & Launch
+
+### 📋 Phase 6 Overview
+
+**Goal**: Comprehensive testing and production deployment
+
+**Status**: ❌ **NOT STARTED**
+
+**Key Deliverables**:
+- Mobile device testing
+- Performance audit (Lighthouse > 90)
+- Accessibility testing
+- Production deployment to Vercel
+- Domain configuration
+- Launch monitoring
 
 ---
 
