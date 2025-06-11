@@ -11,12 +11,7 @@
 		"strict": false,
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"baseUrl": ".",
-		"paths": {
-			"$lib": ["./src/lib"],
-			"$lib/*": ["./src/lib/*"]
-		}
+		"moduleResolution": "bundler"
 	},
 	"include": [
 		"./.svelte-kit/ambient.d.ts",
