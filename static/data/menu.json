@@ -1,0 +1,321 @@
+{
+  "categories": [
+    {
+      "id": "donairs",
+      "name": "Authentic Halifax Donairs",
+      "description": "Our signature donairs made with seasoned beef, fresh tomatoes, onions, and our famous sweet sauce"
+    },
+    {
+      "id": "wraps",
+      "name": "Wraps & Pitas",
+      "description": "Mediterranean-style wraps and pitas with fresh ingredients and house-made sauces"
+    },
+    {
+      "id": "platters",
+      "name": "Platters",
+      "description": "Hearty platters served with rice, salad, and your choice of sauce"
+    },
+    {
+      "id": "sides",
+      "name": "Sides & Appetizers",
+      "description": "Perfect additions to complete your meal"
+    },
+    {
+      "id": "beverages",
+      "name": "Beverages",
+      "description": "Refreshing drinks to complement your meal"
+    }
+  ],
+  "items": [
+    {
+      "category": "donairs",
+      "name": "Classic Halifax Donair",
+      "price": 12.99,
+      "description": "The authentic Halifax donair experience - seasoned beef, tomatoes, onions, and sweet sauce in a warm pita",
+      "ingredients": ["seasoned beef", "tomatoes", "onions", "sweet sauce", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "donairs",
+      "name": "Large Donair",
+      "price": 15.99,
+      "description": "Extra generous portion of our classic donair for the truly hungry",
+      "ingredients": ["seasoned beef", "tomatoes", "onions", "sweet sauce", "large pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "donairs",
+      "name": "Super Donair",
+      "price": 18.99,
+      "description": "Our biggest donair - perfect for sharing or for those with a serious appetite",
+      "ingredients": ["seasoned beef", "tomatoes", "onions", "sweet sauce", "extra large pita bread"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "donairs",
+      "name": "Chicken Donair",
+      "price": 13.99,
+      "description": "Tender seasoned chicken with fresh vegetables and sweet sauce",
+      "ingredients": ["seasoned chicken", "tomatoes", "onions", "sweet sauce", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "donairs",
+      "name": "Lamb Donair",
+      "price": 16.99,
+      "description": "Premium seasoned lamb with traditional accompaniments",
+      "ingredients": ["seasoned lamb", "tomatoes", "onions", "sweet sauce", "pita bread"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "donairs",
+      "name": "Vegetarian Donair",
+      "price": 11.99,
+      "description": "House-made falafel with fresh vegetables and sweet sauce",
+      "ingredients": ["falafel", "tomatoes", "onions", "lettuce", "sweet sauce", "pita bread"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "wraps",
+      "name": "Chicken Shawarma Wrap",
+      "price": 13.99,
+      "description": "Marinated chicken with garlic sauce, pickles, and fresh vegetables in a soft tortilla",
+      "ingredients": ["chicken shawarma", "garlic sauce", "pickles", "tomatoes", "lettuce", "tortilla"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "wraps",
+      "name": "Beef Shawarma Wrap",
+      "price": 14.99,
+      "description": "Seasoned beef with tahini sauce and Mediterranean vegetables",
+      "ingredients": ["beef shawarma", "tahini sauce", "tomatoes", "onions", "parsley", "tortilla"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "wraps",
+      "name": "Falafel Wrap",
+      "price": 12.99,
+      "description": "Crispy falafel with hummus, fresh vegetables, and tahini sauce",
+      "ingredients": ["falafel", "hummus", "tahini sauce", "tomatoes", "lettuce", "cucumber", "tortilla"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "wraps",
+      "name": "Mediterranean Veggie Wrap",
+      "price": 11.99,
+      "description": "Fresh vegetables with hummus, feta cheese, and Mediterranean herbs",
+      "ingredients": ["hummus", "feta cheese", "tomatoes", "cucumber", "lettuce", "olives", "herbs", "tortilla"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "wraps",
+      "name": "Spicy Chicken Wrap",
+      "price": 14.99,
+      "description": "Spicy marinated chicken with hot sauce and cooling yogurt sauce",
+      "ingredients": ["spicy chicken", "hot sauce", "yogurt sauce", "tomatoes", "lettuce", "tortilla"],
+      "popular": false,
+      "spicy": true,
+      "vegetarian": false
+    },
+    {
+      "category": "platters",
+      "name": "Donair Platter",
+      "price": 18.99,
+      "description": "Donair meat served over rice with side salad, sweet sauce, and pita bread",
+      "ingredients": ["donair meat", "basmati rice", "side salad", "sweet sauce", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "platters",
+      "name": "Chicken Shawarma Platter",
+      "price": 19.99,
+      "description": "Marinated chicken over rice with vegetables, garlic sauce, and pita",
+      "ingredients": ["chicken shawarma", "basmati rice", "grilled vegetables", "garlic sauce", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "platters",
+      "name": "Mixed Grill Platter",
+      "price": 24.99,
+      "description": "Combination of chicken and beef with rice, salad, and assorted sauces",
+      "ingredients": ["chicken", "beef", "basmati rice", "mixed salad", "garlic sauce", "tahini", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "platters",
+      "name": "Falafel Platter",
+      "price": 17.99,
+      "description": "Crispy falafel with hummus, tabbouleh, and tahini sauce",
+      "ingredients": ["falafel", "hummus", "tabbouleh", "tahini sauce", "pita bread"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "platters",
+      "name": "Lamb Platter",
+      "price": 26.99,
+      "description": "Tender seasoned lamb with rice pilaf and Mediterranean sides",
+      "ingredients": ["seasoned lamb", "rice pilaf", "grilled vegetables", "yogurt sauce", "pita bread"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": false
+    },
+    {
+      "category": "sides",
+      "name": "Garlic Fingers",
+      "price": 8.99,
+      "description": "Halifax classic - cheesy garlic bread served with donair sauce",
+      "ingredients": ["pizza dough", "garlic butter", "mozzarella cheese", "donair sauce"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "Hummus & Pita",
+      "price": 7.99,
+      "description": "Creamy house-made hummus with warm pita bread",
+      "ingredients": ["chickpea hummus", "olive oil", "paprika", "pita bread"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "Tabbouleh Salad",
+      "price": 6.99,
+      "description": "Fresh parsley salad with tomatoes, mint, and lemon dressing",
+      "ingredients": ["parsley", "tomatoes", "mint", "bulgur", "lemon juice", "olive oil"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "Greek Salad",
+      "price": 9.99,
+      "description": "Traditional Greek salad with feta, olives, and Mediterranean vegetables",
+      "ingredients": ["lettuce", "tomatoes", "cucumber", "feta cheese", "olives", "Greek dressing"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "Dolmades (4 pieces)",
+      "price": 8.99,
+      "description": "Grape leaves stuffed with rice and herbs",
+      "ingredients": ["grape leaves", "rice", "herbs", "lemon juice"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "French Fries",
+      "price": 5.99,
+      "description": "Crispy golden fries seasoned with sea salt",
+      "ingredients": ["potatoes", "sea salt"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "sides",
+      "name": "Onion Rings",
+      "price": 7.99,
+      "description": "Beer-battered onion rings served with ranch dip",
+      "ingredients": ["onions", "beer batter", "ranch dip"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Soft Drinks",
+      "price": 2.99,
+      "description": "Coca-Cola, Pepsi, Sprite, Orange, or Ginger Ale",
+      "ingredients": ["assorted soft drinks"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Bottled Water",
+      "price": 1.99,
+      "description": "Pure spring water",
+      "ingredients": ["spring water"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Turkish Coffee",
+      "price": 3.99,
+      "description": "Traditional strong coffee served in small cups",
+      "ingredients": ["Turkish coffee"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Mint Tea",
+      "price": 3.49,
+      "description": "Refreshing mint tea served hot",
+      "ingredients": ["mint leaves", "green tea"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Fresh Lemonade",
+      "price": 3.99,
+      "description": "House-made fresh lemonade",
+      "ingredients": ["fresh lemons", "sugar", "water"],
+      "popular": true,
+      "spicy": false,
+      "vegetarian": true
+    },
+    {
+      "category": "beverages",
+      "name": "Ayran (Yogurt Drink)",
+      "price": 3.49,
+      "description": "Traditional salted yogurt drink",
+      "ingredients": ["yogurt", "water", "salt"],
+      "popular": false,
+      "spicy": false,
+      "vegetarian": true
+    }
+  ]
+}

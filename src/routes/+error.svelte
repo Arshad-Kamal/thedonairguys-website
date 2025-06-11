@@ -1,16 +1,16 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 </script>
 
 <main>
 	<div class="container">
 		<div class="error-content">
-			<h1 class="error-code">{$page.status || 404}</h1>
+			<h1 class="error-code">{page.status || 404}</h1>
 			<h2 class="error-title">
-				{$page.status === 404 ? 'Page Not Found' : 'Something Went Wrong'}
+				{page.status === 404 ? 'Page Not Found' : 'Something Went Wrong'}
 			</h2>
 			<p class="error-message">
-				{$page.error?.message || 'The page you are looking for does not exist.'}
+				{page.error?.message || 'The page you are looking for does not exist.'}
 			</p>
 			<div class="actions">
 				<a href="/" class="button">Back to Home</a>
