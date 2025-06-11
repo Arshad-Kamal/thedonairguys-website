@@ -35,7 +35,6 @@ npm install
 cp .env.example .env
 
 # Edit .env and add your values:
-# - PUBLIC_GOOGLE_MAPS_KEY: Your Google Maps API key
 # - PUBLIC_SITE_URL: http://localhost:5173 (for local dev)
 ```
 
@@ -104,7 +103,6 @@ npm run build
 
 | Variable | Description | Required | Default |
 |----------|-------------|----------|---------|
-| `PUBLIC_GOOGLE_MAPS_KEY` | Google Maps API key | Yes | - |
 | `PUBLIC_SITE_URL` | Site URL for meta tags | Yes | - |
 
 ## 📊 Implementation Status
