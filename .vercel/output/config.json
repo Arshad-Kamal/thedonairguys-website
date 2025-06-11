@@ -104,6 +104,17 @@
       "continue": true
     },
     {
+      "src": "/contact",
+      "dest": "/contact/"
+    },
+    {
+      "src": "/contact/",
+      "status": 308,
+      "headers": {
+        "Location": "/contact"
+      }
+    },
+    {
       "src": "/env-test",
       "dest": "/env-test/"
     },
@@ -112,6 +123,17 @@
       "status": 308,
       "headers": {
         "Location": "/env-test"
+      }
+    },
+    {
+      "src": "/menu",
+      "dest": "/menu/"
+    },
+    {
+      "src": "/menu/",
+      "status": 308,
+      "headers": {
+        "Location": "/menu"
       }
     },
     {
@@ -150,8 +172,14 @@
     "index.html": {
       "path": ""
     },
+    "contact.html": {
+      "path": "contact"
+    },
     "env-test.html": {
       "path": "env-test"
+    },
+    "menu.html": {
+      "path": "menu"
     }
   },
   "crons": []
